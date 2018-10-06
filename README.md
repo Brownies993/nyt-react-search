@@ -1,29 +1,52 @@
-# Create React Express App
+NYT React Search
 
-## About This Boilerplate
+Overview
 
-This setup allows for a Node/Express/React app which can be easily deployed to Heroku.
+In this activity, you'll create a new React-based rendition of the New York Times Article Search application. This assignment requires you to create React components, work with helper/util functions, and utilize the React mounting lifecycle to query and display articles based on user searches. You'll also use Node, Express and MongoDB so that users can save articles to read later.
 
-The front-end React app will auto-reload as it's updated via webpack dev server, and the backend Express app will auto-reload independently with nodemon.
+Submission on BCS
 
-## Starting the app locally
+Please submit both the deployed Github.io link to your homework AND the link to the Github Repository!
+Instructions
 
-Start by installing front and backend dependencies. While in this directory, run the following command:
+Check out this mockup image. This explains how your site's components should function.
 
-```
-yarn install
-``
+Create a MongoDB database called nytreact.
 
-This should install node modules within the server and the client folder.
+Using mongoose, then create an Article schema and model
 
-After both installations complete, run the following command in your terminal:
+At a minimum, articles should have each of the following fields:
 
-```
-yarn start
-```
+title (Title of the stored article from nytimes.com)
 
-Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
+date (publish date and time of the article)
 
-## Deployment (Heroku)
+url (URL of the article on nytimes.com)
 
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
+Creating documents in your articles collection similar to
+
+{
+  title: 'Ali Sells Jersey House And Moves to Chicago',
+  date: '1974-07-18T00:00:00Z',
+  url: 'http://query.nytimes.com/gst/abstract.html?res=9A0DE5D8173FEF34BC4052DFB166838F669EDE'
+}
+Create a Node/Express/MongoDB/ReactJS app called nytreact. This will be a recreation of the NYT Articles Search exercise application we built back in Week 6. Running this application will:
+
+Create a Bootstrap layout similar to that displayed in HW_Assignment.png. This should be a SPA (Single Page Application) that uses react-router-dom to navigate, hide and show your React components without changing the route within Express.
+
+If you want to try out another CSS framework, feel free to use an alternative to Bootstrap.
+You'll need several Express routes for your app:
+
+/api/articles (get) - your components will use this to query MongoDB for all saved articles
+
+/api/articles (post) - your components will use this to save an article to the database
+
+/api/articles (delete) - your components will use this to delete a saved article in the database
+
+* (get) - will load your single HTML page (with ReactJS) in client/build/index.html. Make sure you put this after all other GET routes
+
+The layout should include at least two React Components for each page Home and Saved.
+
+Home - contains all of the JSX to be rendered on the homepage. This component may contain other smaller components or JSX that renders plain HTML elements. This component should be able to query the NYT API for articles. It displays the results from the API search in a rendered list that displays the article title, publication date, and allows the user to visit an article's url or save the article to the MongoDB.
+
+Saved - Renders articles that are saved in the MongoDB and allows the user to visit the article's url or delete it from the MongoDB. This page may be made up of multiple smaller components or JSX that renders plain HTML elements.
